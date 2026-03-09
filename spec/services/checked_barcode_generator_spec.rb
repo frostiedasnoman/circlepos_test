@@ -93,7 +93,7 @@ RSpec.describe CheckedBarcodeGenerator do
       it "is not valid" do
         generator = generate
         expect(generator.success?).to be false
-        expect(generator.errors.full_messages).to include("invalid EAN prefix of 980 - should be one of [\"978\", \"979\"]")
+        expect(generator.errors.full_messages).to include("invalid EAN prefix of 980 - should be one of 978, 979")
       end
     end
   end

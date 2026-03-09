@@ -34,7 +34,7 @@ class CheckedBarcodeGenerator
   def check_valid_ean_prefix
     ean_prefix = unchecked_isbn_barcode[0..2]
     unless VALID_EAN_PREFIXES.include?(ean_prefix)
-      errors.add(:base, "invalid EAN prefix of #{ean_prefix} - should be one of #{VALID_EAN_PREFIXES}")
+      errors.add(:base, "invalid EAN prefix of #{ean_prefix} - should be one of #{VALID_EAN_PREFIXES.join(', ')}")
     end
   end
 
