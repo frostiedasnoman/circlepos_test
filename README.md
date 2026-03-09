@@ -34,6 +34,15 @@ See [docs/check_digit_generator.md](docs/check_digit_generator.md) for detailed 
 
 ## Usage
 
+### Rake task
+
+```bash
+rake isbn:check_digit[978014300723]
+# => 9780143007234
+```
+
+### In Ruby
+
 ```ruby
 generator = CheckedBarcodeGenerator.perform("978014300723")
 generator.success? # => true
