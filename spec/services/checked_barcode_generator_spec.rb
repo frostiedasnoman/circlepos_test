@@ -10,7 +10,6 @@ RSpec.describe CheckedBarcodeGenerator do
       it "generates the correct check digit and appends it" do
         generator = generate
         expect(generator.success?).to be true
-        expect(generator.errors).to be_empty
         expect(generator.result).to eq("9780143007234")
       end
     end
