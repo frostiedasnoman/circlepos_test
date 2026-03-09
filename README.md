@@ -1,24 +1,52 @@
-# README
+# CirclePOS Test — ISBN-13 Check Digit Generator
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+A Rails service that calculates the check digit for an ISBN-13 barcode.
 
-Things you may want to cover:
+## Requirements
 
-* Ruby version
+- Ruby 3.4.5
+- Rails 8.0
 
-* System dependencies
+## Setup
 
-* Configuration
+```bash
+bundle install
+```
 
-* Database creation
+## Running Tests
 
-* Database initialization
+```bash
+bundle exec rspec
+```
 
-* How to run the test suite
+## Algorithm
 
-* Services (job queues, cache servers, search engines, etc.)
+Given a 12-digit ISBN prefix (e.g. `978014300723`):
 
-* Deployment instructions
+1. Multiply each digit alternately by 1 and 3
+2. Sum the results
+3. Take modulo 10
+4. Subtract from 10 (if result is 10, use 0)
 
-* ...
+Example: `978014300723` → check digit `4` → `9780143007234`
+
+See [docs/check_digit_generator.md](docs/check_digit_generator.md) for detailed documentation and a process flow chart.
+
+## Usage
+
+### Rake task
+
+```bash
+rake isbn:check_digit[978014300723]
+# => 9780143007234
+```
+
+### In Ruby
+
+```ruby
+generator = CheckedBarcodeGenerator.perform("978014300723")
+generator.success? # => true
+generator.result   # => "9780143007234"
+```
+
+The service validates that the input is exactly 12 numeric digits with a valid EAN prefix (`978` or `979`).
