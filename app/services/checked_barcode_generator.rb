@@ -11,8 +11,8 @@ class CheckedBarcodeGenerator
 
   def perform
     check_length
-    check_numeric if success?
-    check_valid_ean_prefix if success?
+    check_numeric
+    check_valid_ean_prefix
     @result = join_check_digit(generate_check_digit) if success?
   end
 
