@@ -15,7 +15,7 @@ Per the business rules set out in the [spec](https://circlepos.com/jobs/), we're
 As the protocol name implies, the barcode is 13 digits long, _including the `check digit`_ (or `checksum` char)
 
 ## EAN
-The 3-digit prefix for the ISBN13 barcode.Per [Wikipedia](https://en.wikipedia.org/wiki/ISBN#Overview), only `978` & `979` have been made available.
+The 3-digit prefix for the ISBN13 barcode. Per [Wikipedia](https://en.wikipedia.org/wiki/ISBN#Overview), only `978` & `979` have been made available.
 
 ## Process Chart
 ```mermaid
