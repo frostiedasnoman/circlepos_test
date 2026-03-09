@@ -15,6 +15,36 @@ RSpec.describe CheckedBarcodeGenerator do
       end
     end
 
+    context "with Old Man's War by John Scalzi (Tor paperback)" do
+      let(:unchecked_isbn_barcode) { "978076531524" }
+
+      it "generates check digit 3" do
+        generator = generate
+        expect(generator.success?).to be true
+        expect(generator.result).to eq("9780765315243")
+      end
+    end
+
+    context "with The Colour of Magic by Terry Pratchett (Corgi edition)" do
+      let(:unchecked_isbn_barcode) { "978055216659" }
+
+      it "generates check digit 1" do
+        generator = generate
+        expect(generator.success?).to be true
+        expect(generator.result).to eq("9780552166591")
+      end
+    end
+
+    context "with a 979 EAN prefix" do
+      let(:unchecked_isbn_barcode) { "979888645174" }
+
+      it "generates the correct check digit" do
+        generator = generate
+        expect(generator.success?).to be true
+        expect(generator.result).to eq("9798886451740")
+      end
+    end
+
     context "when the check digit is 0" do
       let(:unchecked_isbn_barcode) { "978020137960" }
 
